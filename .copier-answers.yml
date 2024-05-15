@@ -1,0 +1,12 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: 2024.04.23
+_src_path: gh:scientific-python/cookie
+backend: hatch
+email: f.isensee@dkfz.de
+full_name: Fabian Isensee
+license: Apache
+org: MIC-DKFZ
+project_name: HD_BET
+project_short_description: Tool for brain extraction
+url: https://github.com/MIC-DKFZ/HD_BET
+vcs: false
