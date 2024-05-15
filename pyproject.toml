@@ -61,6 +61,8 @@ Homepage = "https://github.com/MIC-DKFZ/HD_BET"
 Discussions = "https://github.com/MIC-DKFZ/HD_BET/discussions"
 Changelog = "https://github.com/MIC-DKFZ/HD_BET/releases"
 
+[project.scripts]
+hd-bet = "hd_bet.hd_bet_cli:main"
 
 [tool.hatch]
 version.path = "src/hd_bet/__init__.py"
@@ -89,22 +91,6 @@ report.exclude_also = [
   '\.\.\.',
   'if typing.TYPE_CHECKING:',
 ]
-
-[tool.mypy]
-files = ["src", "tests"]
-python_version = "3.8"
-warn_unused_configs = true
-strict = true
-enable_error_code = ["ignore-without-code", "redundant-expr", "truthy-bool"]
-warn_unreachable = true
-disallow_untyped_defs = false
-disallow_incomplete_defs = false
-
-[[tool.mypy.overrides]]
-module = "hd_bet.*"
-disallow_untyped_defs = true
-disallow_incomplete_defs = true
-
 
 [tool.ruff]
 src = ["src"]
