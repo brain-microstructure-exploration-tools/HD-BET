@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import numpy as np
 import SimpleITK as sitk
-from skimage.transform import resize
+import skimage.transform
 
 
 def resize_image(image, old_spacing, new_spacing, order=3):
@@ -11,7 +11,7 @@ def resize_image(image, old_spacing, new_spacing, order=3):
         int(np.round(old_spacing[1] / new_spacing[1] * float(image.shape[1]))),
         int(np.round(old_spacing[2] / new_spacing[2] * float(image.shape[2]))),
     )
-    return resize(
+    return skimage.transform.resize(
         image, new_shape, order=order, mode="edge", cval=0, anti_aliasing=False
     )
 
@@ -132,7 +132,7 @@ def resize_segmentation(segmentation, new_shape, order=3, cval=0):
         new_shape
     ), "new shape must have same dimensionality as segmentation"
     if order == 0:
-        return resize(
+        return skimage.transform.resize(
             segmentation,
             new_shape,
             order,
@@ -145,7 +145,7 @@ def resize_segmentation(segmentation, new_shape, order=3, cval=0):
         reshaped = np.zeros(new_shape, dtype=segmentation.dtype)
 
         for i, c in enumerate(unique_labels):
-            reshaped_multihot = resize(
+            reshaped_multihot = skimage.transform.resize(
                 (segmentation == c).astype(float),
                 new_shape,
                 order,
